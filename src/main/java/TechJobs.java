@@ -62,7 +62,8 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
-                    printJobs(JobData.findByValue(searchTerm));
+                    //edited some code here in case i broke something
+                    printJobs(JobData.findByValue(searchTerm.toLowerCase()));
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
@@ -120,6 +121,20 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+        if (someJobs.size() == 0) {
+//            // if there is no code matching whats being searched for then say no results
+            System.out.println("No Results");
+        }
+
+        for (HashMap<String, String> job : someJobs) {
+            System.out.println("*****");
+            // loop through and box in the jobs with these asterisks
+            for (Map.Entry<String, String> row : job.entrySet()) {
+                //loop through and print each entry that matches the searchterm
+                System.out.println(row.getKey() + ": " + row.getValue());
+            }
+            System.out.println("*****\n");
+        }
     }
+
 }

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 /**
  * Created by LaunchCode
@@ -78,8 +80,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
-
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -94,12 +95,30 @@ public class JobData {
      * @return      List of all jobs with at least one field containing the value
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
-
-        // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            //loops through the hashmap
+            System.out.println("Here");
+
+            for (String key : row.keySet()){
+                System.out.println("Here1");
+
+                //assigns a variable to the value of the  job key for use
+                String aValue = row.get(key);
+            // checks if the term is inside job at the corresponding key. supposed to be case insensitive
+                if (aValue.toLowerCase().contains(value.toLowerCase())) {
+                    //adds the job to the list of jobs
+                    System.out.println("Here2");
+
+                    jobs.add(row);
+                    break;
+                }
+            }
+        }
+        return jobs;
     }
 
     /**
