@@ -101,17 +101,14 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
             //loops through the hashmap
-            System.out.println("Here");
 
             for (String key : row.keySet()){
-                System.out.println("Here1");
 
                 //assigns a variable to the value of the  job key for use
                 String aValue = row.get(key);
             // checks if the term is inside job at the corresponding key. supposed to be case insensitive
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {
                     //adds the job to the list of jobs
-                    System.out.println("Here2");
 
                     jobs.add(row);
                     break;
