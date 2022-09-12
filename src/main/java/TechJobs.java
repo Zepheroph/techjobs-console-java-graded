@@ -123,17 +123,17 @@ public class TechJobs {
 
         if (someJobs.size() == 0) {
 //            // if there is no code matching whats being searched for then say no results
-            System.out.println("No Results");
+            System.out.printf("No Results");
         }
 
         for (HashMap<String, String> job : someJobs) {
-            System.out.println("*****");
+            System.out.printf("\n*****\n");
             // loop through and box in the jobs with these asterisks
             for (Map.Entry<String, String> row : job.entrySet()) {
                 //loop through and print each entry that matches the searchterm
                 System.out.println(row.getKey() + ": " + row.getValue());
             }
-            System.out.println("*****\n");
+            System.out.printf("*****\n");
         }
     }
 
